@@ -7,7 +7,7 @@ parser = argparse.ArgumentParser(
 parser.add_argument("--image", "-i", help="Image name to pull")
 parser.add_argument("--tag", "-t", help="Image tag to pull")
 parser.add_argument(
-    "--architectures", "-a", help="Architectures to pull", default="amd64"
+    "--architecture", "-a", help="Architecture to pull", default="amd64"
 )
 parser.add_argument("--variant", "-v", help="Variant to pull", default="")
 
