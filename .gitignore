@@ -1,6 +1,9 @@
 **/__pycache__/
 **/.DS_Store
+**/*.egg-info/
+**/_version.py
 /*.tar
 /docker-compose.yml
+/dist/
 /sandbox/
 /.env
