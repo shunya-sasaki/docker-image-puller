@@ -15,7 +15,8 @@ pip install git+https://github.com/shunya-sasaki/docker-image-puller.git
 
 ## Usage
 
-### Command line
+### Pull Docker image
+#### Command line
 
 To execute form the command line, run the command as follows.
 
@@ -35,13 +36,14 @@ ARCHITECTURE
 VARIANT
 : Variant to pull. (e.g.: "v8")
 
-### Python script
+#### Python script
 
 To execute from the Python script,
 use `DockerImagePuller` class as follows.
 
 ```python
 from imagepuller import DockerImagePuller
+from imagepuller import DockerImagePackager
 
 name = "alpine"
 tag = "3.10"
@@ -55,6 +57,17 @@ puller = DockerImagePuller(
     target_variant=variant,
 )
 puller.pull_image()
+packager = DockerImagePackager(name, tag)
+packager.package()
+```
+
+### Load image (Post process)
+
+After pulling a Docker image, run `docker load` command
+to load the tar package file.
+
+```shell
+docker load -i IMAGE_TAR_FILE
 ```
 
 ## Author
