@@ -1,11 +1,12 @@
 import argparse
 from imagepuller.puller import DockerImagePuller
+from imagepuller.packager import DockerImagePackager
 
 parser = argparse.ArgumentParser(
     description="Pull docker image with out Docker"
 )
-parser.add_argument("--image", "-i", help="Image name to pull", required=True)
-parser.add_argument("--tag", "-t", help="Image tag to pull", required=True)
+parser.add_argument("--image", "-i", help="Image name to pull")
+parser.add_argument("--tag", "-t", help="Image tag to pull")
 parser.add_argument(
     "--architecture", "-a", help="Architecture to pull", default="amd64"
 )
@@ -46,3 +47,5 @@ def run(
         target_variant=variant,
     )
     puller.pull_image()
+    packager = DockerImagePackager(name=name, tag=tag)
+    packager.package()
