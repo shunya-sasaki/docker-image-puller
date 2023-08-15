@@ -1,0 +1,29 @@
+[build-system]
+requires = ['setuptools', 'setuptools_scm', 'wheel']
+build-backend = 'setuptools.build_meta'
+
+[project]
+name="docker-image-puller"
+dependencies = []
+dynamic = ['version']
+
+[project.scripts]
+pydocker-pull = "imagepuller.run:run"
+
+[tool.setuptools.dynamic]
+version = {attr="imagepuller._version.version"}
+
+[tool.setuptools_scm]
+write_to = "src/imagepuller/_version.py"
+
+[tool.black]
+line-length = 79
+
+[tool.isort]
+force_single_line = true
+
+[tool.mypy]
+ignore_missing_imports = true
+
+[tool.ruff]
+line-length = 79
